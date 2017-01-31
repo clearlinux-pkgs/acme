@@ -1,0 +1,11 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+python-mock-python
+six-python
+six
+requests-python
+pytz-python
+pyrfc3339-python
+pyOpenSSL
+pyasn1-python
+ndg_httpsclient-python
