@@ -6,7 +6,7 @@
 #
 Name     : acme
 Version  : 0.10.2
-Release  : 1
+Release  : 2
 URL      : https://pypi.python.org/packages/04/bc/9f5d7c50373f67b69459085716a34679d0214a0c45fd281ad54f137722ba/acme-0.10.2.tar.gz
 Source0  : https://pypi.python.org/packages/04/bc/9f5d7c50373f67b69459085716a34679d0214a0c45fd281ad54f137722ba/acme-0.10.2.tar.gz
 Source99 : https://pypi.python.org/packages/04/bc/9f5d7c50373f67b69459085716a34679d0214a0c45fd281ad54f137722ba/acme-0.10.2.tar.gz.asc
@@ -64,7 +64,7 @@ python components for the acme package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1485898604
+export SOURCE_DATE_EPOCH=1485898858
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -74,7 +74,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1485898604
+export SOURCE_DATE_EPOCH=1485898858
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
