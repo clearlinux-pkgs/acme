@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.14.1
-Release  : 6
-URL      : https://pypi.debian.net/acme/acme-0.14.1.tar.gz
-Source0  : https://pypi.debian.net/acme/acme-0.14.1.tar.gz
-Source99 : https://pypi.debian.net/acme/acme-0.14.1.tar.gz.asc
+Version  : 0.14.2
+Release  : 7
+URL      : https://pypi.debian.net/acme/acme-0.14.2.tar.gz
+Source0  : https://pypi.debian.net/acme/acme-0.14.2.tar.gz
+Source99 : https://pypi.debian.net/acme/acme-0.14.2.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -66,14 +66,14 @@ python components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.14.1
+%setup -q -n acme-0.14.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1495200281
+export SOURCE_DATE_EPOCH=1496176833
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -83,7 +83,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1495200281
+export SOURCE_DATE_EPOCH=1496176833
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
