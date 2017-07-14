@@ -2,9 +2,7 @@
 # picked up automatically. One name per line, no whitespace.
 python-mock-python
 six-python
-six
 requests-python
-pytz-python
 pyrfc3339-python
 pyOpenSSL
 pyasn1-python
