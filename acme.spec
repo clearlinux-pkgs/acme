@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.16.0
-Release  : 10
-URL      : https://pypi.debian.net/acme/acme-0.16.0.tar.gz
-Source0  : https://pypi.debian.net/acme/acme-0.16.0.tar.gz
-Source99 : https://pypi.debian.net/acme/acme-0.16.0.tar.gz.asc
+Version  : 0.17.0
+Release  : 11
+URL      : https://pypi.debian.net/acme/acme-0.17.0.tar.gz
+Source0  : https://pypi.debian.net/acme/acme-0.17.0.tar.gz
+Source99 : https://pypi.debian.net/acme/acme-0.17.0.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -47,8 +47,9 @@ BuildRequires : setuptools
 BuildRequires : six-python
 
 %description
-python -m acme.standalone -p 1234
-curl -k https://localhost:1234
+In order for acme.test_util._guess_loader to work properly, make sure
+to use appropriate extension for vector filenames: .pem for PEM and
+.der for DER.
 
 %package bin
 Summary: bin components for the acme package.
@@ -67,14 +68,14 @@ python components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.16.0
+%setup -q -n acme-0.17.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1500075104
+export SOURCE_DATE_EPOCH=1501709093
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -84,7 +85,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1500075104
+export SOURCE_DATE_EPOCH=1501709093
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
