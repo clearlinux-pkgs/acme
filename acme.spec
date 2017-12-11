@@ -5,22 +5,22 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.19.0
-Release  : 13
-URL      : https://pypi.debian.net/acme/acme-0.19.0.tar.gz
-Source0  : https://pypi.debian.net/acme/acme-0.19.0.tar.gz
-Source99 : https://pypi.debian.net/acme/acme-0.19.0.tar.gz.asc
+Version  : 0.20.0
+Release  : 14
+URL      : https://pypi.debian.net/acme/acme-0.20.0.tar.gz
+Source0  : https://pypi.debian.net/acme/acme-0.20.0.tar.gz
+Source99 : https://pypi.debian.net/acme/acme-0.20.0.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: acme-bin
-Requires: acme-legacypython
 Requires: acme-python3
 Requires: acme-python
 Requires: Sphinx
 Requires: cryptography
-Requires: nose
 Requires: pyrfc3339
+Requires: pytest
+Requires: pytest-xdist
 Requires: python-mock
 Requires: pytz
 Requires: setuptools
@@ -63,19 +63,9 @@ Group: Binaries
 bin components for the acme package.
 
 
-%package legacypython
-Summary: legacypython components for the acme package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the acme package.
-
-
 %package python
 Summary: python components for the acme package.
 Group: Default
-Requires: acme-legacypython
 Requires: acme-python3
 
 %description python
@@ -92,15 +82,14 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.19.0
+%setup -q -n acme-0.20.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1512086617
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1512998004
 python3 setup.py build -b py3
 
 %check
@@ -109,10 +98,8 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1512086617
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -123,10 +110,6 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/jws
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
