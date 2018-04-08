@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.22.2
-Release  : 19
-URL      : https://pypi.debian.net/acme/acme-0.22.2.tar.gz
-Source0  : https://pypi.debian.net/acme/acme-0.22.2.tar.gz
-Source99 : https://pypi.debian.net/acme/acme-0.22.2.tar.gz.asc
+Version  : 0.23.0
+Release  : 20
+URL      : https://pypi.debian.net/acme/acme-0.23.0.tar.gz
+Source0  : https://pypi.debian.net/acme/acme-0.23.0.tar.gz
+Source99 : https://pypi.debian.net/acme/acme-0.23.0.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -17,6 +17,7 @@ Requires: acme-python3
 Requires: acme-python
 Requires: Sphinx
 Requires: cryptography
+Requires: pyOpenSSL
 Requires: pyrfc3339
 Requires: pytest
 Requires: pytest-xdist
@@ -29,7 +30,6 @@ Requires: tox
 BuildRequires : certifi
 BuildRequires : cffi
 BuildRequires : cffi-python
-BuildRequires : chardet-python
 BuildRequires : cryptography
 BuildRequires : enum34-python
 BuildRequires : josepy-python
@@ -50,7 +50,6 @@ BuildRequires : pytz
 BuildRequires : requests-python
 BuildRequires : setuptools
 BuildRequires : six-python
-BuildRequires : urllib3-python
 
 %description
 python -m acme.standalone -p 1234
@@ -75,14 +74,14 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.22.2
+%setup -q -n acme-0.23.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522516533
+export SOURCE_DATE_EPOCH=1523208131
 python3 setup.py build -b py3
 
 %check
