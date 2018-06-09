@@ -4,3 +4,4 @@ tox
 python-mock
 pytest-xdist
 pytest
+setuptools
