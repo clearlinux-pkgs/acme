@@ -6,7 +6,7 @@
 #
 Name     : acme
 Version  : 0.23.0
-Release  : 22
+Release  : 23
 URL      : https://pypi.debian.net/acme/acme-0.23.0.tar.gz
 Source0  : https://pypi.debian.net/acme/acme-0.23.0.tar.gz
 Source99 : https://pypi.debian.net/acme/acme-0.23.0.tar.gz.asc
@@ -17,16 +17,13 @@ Requires: acme-python3
 Requires: acme-python
 Requires: Sphinx
 Requires: cryptography
+Requires: josepy
 Requires: pyOpenSSL
 Requires: pyrfc3339
-Requires: pytest
-Requires: pytest-xdist
-Requires: python-mock
 Requires: pytz
 Requires: setuptools
 Requires: six
 Requires: sphinx_rtd_theme
-Requires: tox
 BuildRequires : certifi
 BuildRequires : cffi
 BuildRequires : cffi-python
@@ -81,7 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523208131
+export SOURCE_DATE_EPOCH=1528563064
 python3 setup.py build -b py3
 
 %check
