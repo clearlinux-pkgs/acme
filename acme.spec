@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.23.0
-Release  : 35
-URL      : https://pypi.debian.net/acme/acme-0.23.0.tar.gz
-Source0  : https://pypi.debian.net/acme/acme-0.23.0.tar.gz
-Source99 : https://pypi.debian.net/acme/acme-0.23.0.tar.gz.asc
+Version  : 0.26.1
+Release  : 36
+URL      : https://files.pythonhosted.org/packages/f6/2f/c976519266cb3448894fb162d3b54a1297ea5609b65bd732289d2712bd13/acme-0.26.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/f6/2f/c976519266cb3448894fb162d3b54a1297ea5609b65bd732289d2712bd13/acme-0.26.1.tar.gz
+Source99 : https://files.pythonhosted.org/packages/f6/2f/c976519266cb3448894fb162d3b54a1297ea5609b65bd732289d2712bd13/acme-0.26.1.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -22,17 +22,16 @@ Requires: josepy
 Requires: pyOpenSSL
 Requires: pyrfc3339
 Requires: pytz
+Requires: requests-toolbelt
 Requires: six
 Requires: sphinx_rtd_theme
+BuildRequires : buildreq-distutils3
 BuildRequires : certifi
 BuildRequires : cffi
 BuildRequires : cffi-python
 BuildRequires : cryptography
 BuildRequires : enum34-python
-BuildRequires : josepy-python
 BuildRequires : ndg_httpsclient-python
-BuildRequires : pbr
-BuildRequires : pip
 BuildRequires : pyOpenSSL
 BuildRequires : pyasn1-python
 BuildRequires : pycparser
@@ -41,10 +40,9 @@ BuildRequires : pyrfc3339
 BuildRequires : pyrfc3339-python
 BuildRequires : python-mock
 BuildRequires : python-mock-python
-BuildRequires : python3-dev
 BuildRequires : pytz
 BuildRequires : requests-python
-BuildRequires : setuptools
+BuildRequires : requests-toolbelt
 BuildRequires : six-python
 
 %description
@@ -78,21 +76,21 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.23.0
+%setup -q -n acme-0.26.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1530386147
+export SOURCE_DATE_EPOCH=1533056416
 python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/acme

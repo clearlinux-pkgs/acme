@@ -13,3 +13,5 @@ enum34-python
 pycparser-python
 pycparser
 certifi
+requests-toolbelt
+josepy
