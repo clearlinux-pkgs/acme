@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.26.1
-Release  : 36
-URL      : https://files.pythonhosted.org/packages/f6/2f/c976519266cb3448894fb162d3b54a1297ea5609b65bd732289d2712bd13/acme-0.26.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/f6/2f/c976519266cb3448894fb162d3b54a1297ea5609b65bd732289d2712bd13/acme-0.26.1.tar.gz
-Source99 : https://files.pythonhosted.org/packages/f6/2f/c976519266cb3448894fb162d3b54a1297ea5609b65bd732289d2712bd13/acme-0.26.1.tar.gz.asc
+Version  : 0.27.1
+Release  : 37
+URL      : https://files.pythonhosted.org/packages/42/91/bad522d41ed2c04e4da115df66792482c75d60ba70bb6c5675aa643861c0/acme-0.27.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/42/91/bad522d41ed2c04e4da115df66792482c75d60ba70bb6c5675aa643861c0/acme-0.27.1.tar.gz
+Source99 : https://files.pythonhosted.org/packages/42/91/bad522d41ed2c04e4da115df66792482c75d60ba70bb6c5675aa643861c0/acme-0.27.1.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -76,14 +76,14 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.26.1
+%setup -q -n acme-0.27.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533056416
+export SOURCE_DATE_EPOCH=1536501250
 python3 setup.py build -b py3
 
 %check
