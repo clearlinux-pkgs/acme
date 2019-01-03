@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.29.1
-Release  : 43
-URL      : https://files.pythonhosted.org/packages/be/68/7b402b1da5d969882c4d67650c3c37bede7027e5bd31c791eeabbbefcd22/acme-0.29.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/be/68/7b402b1da5d969882c4d67650c3c37bede7027e5bd31c791eeabbbefcd22/acme-0.29.1.tar.gz
-Source99 : https://files.pythonhosted.org/packages/be/68/7b402b1da5d969882c4d67650c3c37bede7027e5bd31c791eeabbbefcd22/acme-0.29.1.tar.gz.asc
+Version  : 0.30.0
+Release  : 44
+URL      : https://files.pythonhosted.org/packages/5e/32/e59e380f8072083bf025fde29a70c533ba141150bcd4e37fad5d9e369efe/acme-0.30.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/5e/32/e59e380f8072083bf025fde29a70c533ba141150bcd4e37fad5d9e369efe/acme-0.30.0.tar.gz
+Source99 : https://files.pythonhosted.org/packages/5e/32/e59e380f8072083bf025fde29a70c533ba141150bcd4e37fad5d9e369efe/acme-0.30.0.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -44,8 +44,9 @@ BuildRequires : requests-toolbelt
 BuildRequires : six-python
 
 %description
-python -m acme.standalone -p 1234
-curl -k https://localhost:1234
+In order for acme.test_util._guess_loader to work properly, make sure
+to use appropriate extension for vector filenames: .pem for PEM and
+.der for DER.
 
 %package license
 Summary: license components for the acme package.
@@ -74,14 +75,14 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.29.1
+%setup -q -n acme-0.30.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1544221265
+export SOURCE_DATE_EPOCH=1546483874
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
