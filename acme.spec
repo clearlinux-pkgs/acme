@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.31.0
-Release  : 47
-URL      : https://files.pythonhosted.org/packages/c6/86/2b59e81177ceb2f2045d14138172e5086f7dc1ebb54ff48674c3e6950b34/acme-0.31.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/c6/86/2b59e81177ceb2f2045d14138172e5086f7dc1ebb54ff48674c3e6950b34/acme-0.31.0.tar.gz
-Source99 : https://files.pythonhosted.org/packages/c6/86/2b59e81177ceb2f2045d14138172e5086f7dc1ebb54ff48674c3e6950b34/acme-0.31.0.tar.gz.asc
+Version  : 0.32.0
+Release  : 48
+URL      : https://files.pythonhosted.org/packages/53/9d/1255c6bfe259e64083f4e709210a9c59f73c7c729dfde8cd88bfc817f1e5/acme-0.32.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/53/9d/1255c6bfe259e64083f4e709210a9c59f73c7c729dfde8cd88bfc817f1e5/acme-0.32.0.tar.gz
+Source99 : https://files.pythonhosted.org/packages/53/9d/1255c6bfe259e64083f4e709210a9c59f73c7c729dfde8cd88bfc817f1e5/acme-0.32.0.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -23,19 +23,26 @@ Requires: pyrfc3339
 Requires: pytz
 Requires: requests-toolbelt
 Requires: six
+BuildRequires : atomicwrites-python
+BuildRequires : attrs-python
 BuildRequires : buildreq-distutils3
 BuildRequires : certifi
 BuildRequires : cffi
 BuildRequires : cffi-python
 BuildRequires : cryptography
 BuildRequires : enum34-python
+BuildRequires : josepy-python
+BuildRequires : more-itertools-python
 BuildRequires : ndg_httpsclient-python
+BuildRequires : pluggy-python
+BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pyasn1-python
 BuildRequires : pycparser
 BuildRequires : pycparser-python
 BuildRequires : pyrfc3339
 BuildRequires : pyrfc3339-python
+BuildRequires : pytest-python
 BuildRequires : python-mock
 BuildRequires : python-mock-python
 BuildRequires : pytz
@@ -75,14 +82,15 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.31.0
+%setup -q -n acme-0.32.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549595303
+export SOURCE_DATE_EPOCH=1551924029
+export LDFLAGS="${LDFLAGS} -fno-lto"
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -92,6 +100,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/acme
 cp LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/LICENSE.txt
