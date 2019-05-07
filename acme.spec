@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.34.0
-Release  : 52
-URL      : https://files.pythonhosted.org/packages/99/be/e82a2f7666ab7b8e0e9793b3ff143c259b47afaecac5e112daac25ff52fb/acme-0.34.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/99/be/e82a2f7666ab7b8e0e9793b3ff143c259b47afaecac5e112daac25ff52fb/acme-0.34.0.tar.gz
-Source99 : https://files.pythonhosted.org/packages/99/be/e82a2f7666ab7b8e0e9793b3ff143c259b47afaecac5e112daac25ff52fb/acme-0.34.0.tar.gz.asc
+Version  : 0.34.1
+Release  : 53
+URL      : https://files.pythonhosted.org/packages/a4/49/4aa2477afa8eda678358e83773ee39aacfd5c0c8ee799c006a82b18457ec/acme-0.34.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/a4/49/4aa2477afa8eda678358e83773ee39aacfd5c0c8ee799c006a82b18457ec/acme-0.34.1.tar.gz
+Source99 : https://files.pythonhosted.org/packages/a4/49/4aa2477afa8eda678358e83773ee39aacfd5c0c8ee799c006a82b18457ec/acme-0.34.1.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -23,8 +23,6 @@ Requires: pyrfc3339
 Requires: pytz
 Requires: requests-toolbelt
 Requires: six
-BuildRequires : atomicwrites-python
-BuildRequires : attrs-python
 BuildRequires : buildreq-distutils3
 BuildRequires : certifi
 BuildRequires : cffi
@@ -32,16 +30,14 @@ BuildRequires : cffi-python
 BuildRequires : cryptography
 BuildRequires : enum34-python
 BuildRequires : josepy-python
-BuildRequires : more-itertools-python
 BuildRequires : ndg_httpsclient-python
-BuildRequires : pluggy-python
-BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pyasn1-python
 BuildRequires : pycparser
 BuildRequires : pycparser-python
 BuildRequires : pyrfc3339
 BuildRequires : pyrfc3339-python
+BuildRequires : pytest
 BuildRequires : pytest-python
 BuildRequires : python-mock
 BuildRequires : python-mock-python
@@ -81,14 +77,21 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.34.0
+%setup -q -n acme-0.34.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1556803180
+export SOURCE_DATE_EPOCH=1557191065
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
