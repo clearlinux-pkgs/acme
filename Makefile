@@ -1,5 +1,5 @@
 PKG_NAME := acme
-URL = https://files.pythonhosted.org/packages/38/a5/0b6e3013d276e6d113cf34d675532a27737b54cbdd468ad748746cda61ee/acme-0.35.0.tar.gz
+URL = https://files.pythonhosted.org/packages/28/b7/2454a88c498b5c86432b511ef8079c74653f03cbbc6fdb513083c25a2ccd/acme-0.35.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
