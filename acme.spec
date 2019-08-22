@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.37.1
-Release  : 60
-URL      : https://files.pythonhosted.org/packages/31/52/c67852f19362288274401bf67dae6c2f5edf87f362667072d09570ccc10e/acme-0.37.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/31/52/c67852f19362288274401bf67dae6c2f5edf87f362667072d09570ccc10e/acme-0.37.1.tar.gz
-Source1 : https://files.pythonhosted.org/packages/31/52/c67852f19362288274401bf67dae6c2f5edf87f362667072d09570ccc10e/acme-0.37.1.tar.gz.asc
-Summary  : ACME protocol implementation in Python
+Version  : 0.37.2
+Release  : 61
+URL      : https://files.pythonhosted.org/packages/05/a4/e8eea0273f0e38d2dd3cfebad0ef00d41d4e4e45cdba4766e51b8ff930f4/acme-0.37.2.tar.gz
+Source0  : https://files.pythonhosted.org/packages/05/a4/e8eea0273f0e38d2dd3cfebad0ef00d41d4e4e45cdba4766e51b8ff930f4/acme-0.37.2.tar.gz
+Source1 : https://files.pythonhosted.org/packages/05/a4/e8eea0273f0e38d2dd3cfebad0ef00d41d4e4e45cdba4766e51b8ff930f4/acme-0.37.2.tar.gz.asc
+Summary  : Assembler for the 6502, 6510, 65c02 and 65816 processors
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: acme-license = %{version}-%{release}
@@ -78,14 +78,14 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.37.1
+%setup -q -n acme-0.37.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565320402
+export SOURCE_DATE_EPOCH=1566482116
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
