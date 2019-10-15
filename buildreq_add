@@ -9,7 +9,6 @@ pyasn1-python
 ndg_httpsclient-python
 cffi-python
 cffi
-enum34-python
 pycparser-python
 pycparser
 certifi

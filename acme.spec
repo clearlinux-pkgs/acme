@@ -6,11 +6,11 @@
 #
 Name     : acme
 Version  : 0.39.0
-Release  : 63
+Release  : 64
 URL      : https://files.pythonhosted.org/packages/69/7a/f20452e26d88d95a3fece217244117da8a099be08f8fe718eef665dc8b74/acme-0.39.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/69/7a/f20452e26d88d95a3fece217244117da8a099be08f8fe718eef665dc8b74/acme-0.39.0.tar.gz
 Source1 : https://files.pythonhosted.org/packages/69/7a/f20452e26d88d95a3fece217244117da8a099be08f8fe718eef665dc8b74/acme-0.39.0.tar.gz.asc
-Summary  : Assembler for the 6502, 6510, 65c02 and 65816 processors
+Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: acme-license = %{version}-%{release}
@@ -23,14 +23,19 @@ Requires: pyrfc3339
 Requires: pytz
 Requires: requests-toolbelt
 Requires: six
+BuildRequires : atomicwrites-python
+BuildRequires : attrs-python
 BuildRequires : buildreq-distutils3
 BuildRequires : certifi
 BuildRequires : cffi
 BuildRequires : cffi-python
 BuildRequires : cryptography
-BuildRequires : enum34-python
 BuildRequires : josepy
+BuildRequires : josepy-python
+BuildRequires : more-itertools-python
 BuildRequires : ndg_httpsclient-python
+BuildRequires : pluggy-python
+BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pyasn1-python
 BuildRequires : pycparser
@@ -85,8 +90,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569981955
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1571159810
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -107,7 +111,7 @@ PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test ||
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/acme
-cp LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/LICENSE.txt
+cp %{_builddir}/acme-0.39.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -118,7 +122,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/acme/LICENSE.txt
+/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 
 %files python
 %defattr(-,root,root,-)
