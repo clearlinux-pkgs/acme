@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.39.0
-Release  : 64
-URL      : https://files.pythonhosted.org/packages/69/7a/f20452e26d88d95a3fece217244117da8a099be08f8fe718eef665dc8b74/acme-0.39.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/69/7a/f20452e26d88d95a3fece217244117da8a099be08f8fe718eef665dc8b74/acme-0.39.0.tar.gz
-Source1 : https://files.pythonhosted.org/packages/69/7a/f20452e26d88d95a3fece217244117da8a099be08f8fe718eef665dc8b74/acme-0.39.0.tar.gz.asc
-Summary  : ACME protocol implementation in Python
+Version  : 0.40.0
+Release  : 66
+URL      : https://files.pythonhosted.org/packages/a9/9e/5f5e098acfd9fca52881a1e2fde0b64f2b78a3f6b856baa4489d6556b8a1/acme-0.40.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/a9/9e/5f5e098acfd9fca52881a1e2fde0b64f2b78a3f6b856baa4489d6556b8a1/acme-0.40.0.tar.gz
+Source1 : https://files.pythonhosted.org/packages/a9/9e/5f5e098acfd9fca52881a1e2fde0b64f2b78a3f6b856baa4489d6556b8a1/acme-0.40.0.tar.gz.asc
+Summary  : Assembler for the 6502, 6510, 65c02 and 65816 processors
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: acme-license = %{version}-%{release}
@@ -23,19 +23,13 @@ Requires: pyrfc3339
 Requires: pytz
 Requires: requests-toolbelt
 Requires: six
-BuildRequires : atomicwrites-python
-BuildRequires : attrs-python
 BuildRequires : buildreq-distutils3
 BuildRequires : certifi
 BuildRequires : cffi
 BuildRequires : cffi-python
 BuildRequires : cryptography
 BuildRequires : josepy
-BuildRequires : josepy-python
-BuildRequires : more-itertools-python
 BuildRequires : ndg_httpsclient-python
-BuildRequires : pluggy-python
-BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pyasn1-python
 BuildRequires : pycparser
@@ -51,6 +45,7 @@ BuildRequires : requests-python
 BuildRequires : requests-toolbelt
 BuildRequires : six
 BuildRequires : six-python
+BuildRequires : util-linux
 
 %description
 python -m acme.standalone -p 1234
@@ -83,14 +78,15 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.39.0
+%setup -q -n acme-0.40.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571159810
+export SOURCE_DATE_EPOCH=1573015391
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -111,7 +107,7 @@ PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test ||
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/acme
-cp %{_builddir}/acme-0.39.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/acme-0.40.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :

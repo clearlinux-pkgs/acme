@@ -1,4 +1,4 @@
-0.39.0
+0.40.0
 atomicwrites-python
 attrs-python
 josepy-python
@@ -7,3 +7,4 @@ pluggy-python
 py-python
 pytest
 pytest-python
+util-linux
