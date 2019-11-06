@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.40.0
-Release  : 66
-URL      : https://files.pythonhosted.org/packages/a9/9e/5f5e098acfd9fca52881a1e2fde0b64f2b78a3f6b856baa4489d6556b8a1/acme-0.40.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/a9/9e/5f5e098acfd9fca52881a1e2fde0b64f2b78a3f6b856baa4489d6556b8a1/acme-0.40.0.tar.gz
-Source1 : https://files.pythonhosted.org/packages/a9/9e/5f5e098acfd9fca52881a1e2fde0b64f2b78a3f6b856baa4489d6556b8a1/acme-0.40.0.tar.gz.asc
+Version  : 0.40.1
+Release  : 67
+URL      : https://files.pythonhosted.org/packages/ec/64/e1e609c6041a3d934a8878f3061b2c97cb9dbab681c043e6e7d90410928a/acme-0.40.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/ec/64/e1e609c6041a3d934a8878f3061b2c97cb9dbab681c043e6e7d90410928a/acme-0.40.1.tar.gz
+Source1 : https://files.pythonhosted.org/packages/ec/64/e1e609c6041a3d934a8878f3061b2c97cb9dbab681c043e6e7d90410928a/acme-0.40.1.tar.gz.asc
 Summary  : Assembler for the 6502, 6510, 65c02 and 65816 processors
 Group    : Development/Tools
 License  : Apache-2.0
@@ -78,14 +78,14 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.40.0
+%setup -q -n acme-0.40.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573015391
+export SOURCE_DATE_EPOCH=1573049636
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -107,7 +107,7 @@ PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test ||
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/acme
-cp %{_builddir}/acme-0.40.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/acme-0.40.1/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
