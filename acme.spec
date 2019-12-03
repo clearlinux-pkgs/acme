@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 0.40.1
-Release  : 67
-URL      : https://files.pythonhosted.org/packages/ec/64/e1e609c6041a3d934a8878f3061b2c97cb9dbab681c043e6e7d90410928a/acme-0.40.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/ec/64/e1e609c6041a3d934a8878f3061b2c97cb9dbab681c043e6e7d90410928a/acme-0.40.1.tar.gz
-Source1 : https://files.pythonhosted.org/packages/ec/64/e1e609c6041a3d934a8878f3061b2c97cb9dbab681c043e6e7d90410928a/acme-0.40.1.tar.gz.asc
+Version  : 1.0.0
+Release  : 68
+URL      : https://files.pythonhosted.org/packages/c7/57/8747646a4ae8fbde7460248b2489a68cf9161029009e55d305b36df40f21/acme-1.0.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/c7/57/8747646a4ae8fbde7460248b2489a68cf9161029009e55d305b36df40f21/acme-1.0.0.tar.gz
+Source1 : https://files.pythonhosted.org/packages/c7/57/8747646a4ae8fbde7460248b2489a68cf9161029009e55d305b36df40f21/acme-1.0.0.tar.gz.asc
 Summary  : Assembler for the 6502, 6510, 65c02 and 65816 processors
 Group    : Development/Tools
 License  : Apache-2.0
@@ -45,7 +45,6 @@ BuildRequires : requests-python
 BuildRequires : requests-toolbelt
 BuildRequires : six
 BuildRequires : six-python
-BuildRequires : util-linux
 
 %description
 python -m acme.standalone -p 1234
@@ -78,14 +77,15 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-0.40.1
+%setup -q -n acme-1.0.0
+cd %{_builddir}/acme-1.0.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573049636
+export SOURCE_DATE_EPOCH=1575404926
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -102,12 +102,12 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/acme
-cp %{_builddir}/acme-0.40.1/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/acme-1.0.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
