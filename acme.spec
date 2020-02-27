@@ -6,7 +6,7 @@
 #
 Name     : acme
 Version  : 1.2.0
-Release  : 72
+Release  : 73
 URL      : https://files.pythonhosted.org/packages/40/0c/eeac8a14019d6f297fbd3b2bacfa57d38e60147cc03542214662253a694c/acme-1.2.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/40/0c/eeac8a14019d6f297fbd3b2bacfa57d38e60147cc03542214662253a694c/acme-1.2.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/40/0c/eeac8a14019d6f297fbd3b2bacfa57d38e60147cc03542214662253a694c/acme-1.2.0.tar.gz.asc
@@ -71,6 +71,7 @@ python components for the acme package.
 Summary: python3 components for the acme package.
 Group: Default
 Requires: python3-core
+Provides: pypi(acme)
 
 %description python3
 python3 components for the acme package.
@@ -85,7 +86,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580944909
+export SOURCE_DATE_EPOCH=1582844709
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
