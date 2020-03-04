@@ -19,7 +19,7 @@ Requires: acme-python3 = %{version}-%{release}
 Requires: cryptography
 Requires: josepy
 Requires: pyOpenSSL
-Requires: pyrfc3339
+Requires: pyRFC3339
 Requires: pytz
 Requires: requests-toolbelt
 Requires: six
@@ -34,8 +34,8 @@ BuildRequires : pyOpenSSL
 BuildRequires : pyasn1-python
 BuildRequires : pycparser
 BuildRequires : pycparser-python
-BuildRequires : pyrfc3339
-BuildRequires : pyrfc3339-python
+BuildRequires : pyRFC3339
+BuildRequires : pyRFC3339-python
 BuildRequires : pytest
 BuildRequires : pytest-python
 BuildRequires : python-mock
