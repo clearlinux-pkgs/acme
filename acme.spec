@@ -80,12 +80,7 @@ Requires: pypi(sphinx-rtd-theme)
 Requires: pypi(six)
 Requires: pypi(pytz)
 Requires: pypi(tox)
-Requires: pypi(requests[security])
 Requires: pypi(PyOpenSSL)
-Requires: pypi(pyrfc3339)
-Requires: pypi(pytest)
-Requires: pypi(pytest-xdist)
-Requires: pypi(josepy)
 Requires: pypi(setuptools)
 
 %description python3
