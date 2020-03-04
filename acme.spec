@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 1.2.0
-Release  : 73
-URL      : https://files.pythonhosted.org/packages/40/0c/eeac8a14019d6f297fbd3b2bacfa57d38e60147cc03542214662253a694c/acme-1.2.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/40/0c/eeac8a14019d6f297fbd3b2bacfa57d38e60147cc03542214662253a694c/acme-1.2.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/40/0c/eeac8a14019d6f297fbd3b2bacfa57d38e60147cc03542214662253a694c/acme-1.2.0.tar.gz.asc
+Version  : 1.3.0
+Release  : 74
+URL      : https://files.pythonhosted.org/packages/37/6c/fbf55777f813eed9db446182c5adad51a1f56cdb5a10c454590c35551b07/acme-1.3.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/37/6c/fbf55777f813eed9db446182c5adad51a1f56cdb5a10c454590c35551b07/acme-1.3.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/37/6c/fbf55777f813eed9db446182c5adad51a1f56cdb5a10c454590c35551b07/acme-1.3.0.tar.gz.asc
 Summary  : Assembler for the 6502, 6510, 65c02 and 65816 processors
 Group    : Development/Tools
 License  : Apache-2.0
@@ -72,21 +72,36 @@ Summary: python3 components for the acme package.
 Group: Default
 Requires: python3-core
 Provides: pypi(acme)
+Requires: pypi(cryptography)
+Requires: pypi(requests-toolbelt)
+Requires: pypi(Sphinx)
+Requires: pypi(mock)
+Requires: pypi(sphinx-rtd-theme)
+Requires: pypi(six)
+Requires: pypi(pytz)
+Requires: pypi(tox)
+Requires: pypi(requests[security])
+Requires: pypi(PyOpenSSL)
+Requires: pypi(pyrfc3339)
+Requires: pypi(pytest)
+Requires: pypi(pytest-xdist)
+Requires: pypi(josepy)
+Requires: pypi(setuptools)
 
 %description python3
 python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-1.2.0
-cd %{_builddir}/acme-1.2.0
+%setup -q -n acme-1.3.0
+cd %{_builddir}/acme-1.3.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582844709
+export SOURCE_DATE_EPOCH=1583291999
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -108,7 +123,7 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/acme
-cp %{_builddir}/acme-1.2.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/acme-1.3.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
