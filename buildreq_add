@@ -3,7 +3,7 @@
 python-mock-python
 six-python
 requests-python
-pyrfc3339-python
+pyRFC3339-python
 pyOpenSSL
 pyasn1-python
 ndg_httpsclient-python

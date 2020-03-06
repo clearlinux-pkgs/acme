@@ -6,11 +6,11 @@
 #
 Name     : acme
 Version  : 1.3.0
-Release  : 76
+Release  : 77
 URL      : https://files.pythonhosted.org/packages/37/6c/fbf55777f813eed9db446182c5adad51a1f56cdb5a10c454590c35551b07/acme-1.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/37/6c/fbf55777f813eed9db446182c5adad51a1f56cdb5a10c454590c35551b07/acme-1.3.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/37/6c/fbf55777f813eed9db446182c5adad51a1f56cdb5a10c454590c35551b07/acme-1.3.0.tar.gz.asc
-Summary  : Assembler for the 6502, 6510, 65c02 and 65816 processors
+Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: acme-license = %{version}-%{release}
@@ -19,7 +19,6 @@ Requires: acme-python3 = %{version}-%{release}
 Requires: cryptography
 Requires: josepy
 Requires: pyOpenSSL
-Requires: pyRFC3339
 Requires: pytz
 Requires: requests-toolbelt
 Requires: six
@@ -31,11 +30,10 @@ BuildRequires : cryptography
 BuildRequires : josepy
 BuildRequires : ndg_httpsclient-python
 BuildRequires : pyOpenSSL
+BuildRequires : pyRFC3339-python
 BuildRequires : pyasn1-python
 BuildRequires : pycparser
 BuildRequires : pycparser-python
-BuildRequires : pyRFC3339
-BuildRequires : pyRFC3339-python
 BuildRequires : pytest
 BuildRequires : pytest-python
 BuildRequires : python-mock
@@ -73,15 +71,15 @@ Group: Default
 Requires: python3-core
 Provides: pypi(acme)
 Requires: pypi(cryptography)
-Requires: pypi(requests-toolbelt)
-Requires: pypi(Sphinx)
+Requires: pypi(josepy)
 Requires: pypi(mock)
-Requires: pypi(sphinx-rtd-theme)
-Requires: pypi(six)
+Requires: pypi(pyopenssl)
+Requires: pypi(pyrfc3339)
 Requires: pypi(pytz)
-Requires: pypi(tox)
-Requires: pypi(PyOpenSSL)
+Requires: pypi(requests)
+Requires: pypi(requests_toolbelt)
 Requires: pypi(setuptools)
+Requires: pypi(six)
 
 %description python3
 python3 components for the acme package.
@@ -96,8 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583291999
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1583454642
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
