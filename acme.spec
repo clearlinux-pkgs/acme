@@ -6,11 +6,11 @@
 #
 Name     : acme
 Version  : 1.3.0
-Release  : 77
+Release  : 78
 URL      : https://files.pythonhosted.org/packages/37/6c/fbf55777f813eed9db446182c5adad51a1f56cdb5a10c454590c35551b07/acme-1.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/37/6c/fbf55777f813eed9db446182c5adad51a1f56cdb5a10c454590c35551b07/acme-1.3.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/37/6c/fbf55777f813eed9db446182c5adad51a1f56cdb5a10c454590c35551b07/acme-1.3.0.tar.gz.asc
-Summary  : ACME protocol implementation in Python
+Summary  : Assembler for the 6502, 6510, 65c02 and 65816 processors
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: acme-license = %{version}-%{release}
@@ -70,16 +70,16 @@ Summary: python3 components for the acme package.
 Group: Default
 Requires: python3-core
 Provides: pypi(acme)
-Requires: pypi(cryptography)
-Requires: pypi(josepy)
-Requires: pypi(mock)
-Requires: pypi(pyopenssl)
-Requires: pypi(pyrfc3339)
-Requires: pypi(pytz)
 Requires: pypi(requests)
+Requires: pypi(josepy)
 Requires: pypi(requests_toolbelt)
+Requires: pypi(cryptography)
+Requires: pypi(pyrfc3339)
 Requires: pypi(setuptools)
+Requires: pypi(pytz)
+Requires: pypi(pyopenssl)
 Requires: pypi(six)
+Requires: pypi(mock)
 
 %description python3
 python3 components for the acme package.
@@ -94,7 +94,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583454642
+export SOURCE_DATE_EPOCH=1585319347
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
