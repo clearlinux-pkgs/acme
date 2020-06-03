@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 1.4.0
-Release  : 79
-URL      : https://files.pythonhosted.org/packages/55/88/60c51f6505de862ed79ee5d8ee4e8e9432f00f030c4a4332ff442e9bfb26/acme-1.4.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/55/88/60c51f6505de862ed79ee5d8ee4e8e9432f00f030c4a4332ff442e9bfb26/acme-1.4.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/55/88/60c51f6505de862ed79ee5d8ee4e8e9432f00f030c4a4332ff442e9bfb26/acme-1.4.0.tar.gz.asc
+Version  : 1.5.0
+Release  : 80
+URL      : https://files.pythonhosted.org/packages/9e/ac/9db91e25da166788b6810ef18d5fdc6f8cf333033e6bc42255b27484afe0/acme-1.5.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/9e/ac/9db91e25da166788b6810ef18d5fdc6f8cf333033e6bc42255b27484afe0/acme-1.5.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/9e/ac/9db91e25da166788b6810ef18d5fdc6f8cf333033e6bc42255b27484afe0/acme-1.5.0.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -84,15 +84,15 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-1.4.0
-cd %{_builddir}/acme-1.4.0
+%setup -q -n acme-1.5.0
+cd %{_builddir}/acme-1.5.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1588733308
+export SOURCE_DATE_EPOCH=1591220851
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -113,7 +113,7 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/acme
-cp %{_builddir}/acme-1.4.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/acme-1.5.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
