@@ -6,7 +6,7 @@
 #
 Name     : acme
 Version  : 1.6.0
-Release  : 81
+Release  : 82
 URL      : https://files.pythonhosted.org/packages/71/bf/994762725d9eb68ffa8117e41a5bcc084177b48dbf4cc0a2e44813609640/acme-1.6.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/71/bf/994762725d9eb68ffa8117e41a5bcc084177b48dbf4cc0a2e44813609640/acme-1.6.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/71/bf/994762725d9eb68ffa8117e41a5bcc084177b48dbf4cc0a2e44813609640/acme-1.6.0.tar.gz.asc
