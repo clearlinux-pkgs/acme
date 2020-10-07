@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 1.8.0
-Release  : 85
-URL      : https://files.pythonhosted.org/packages/85/07/659705c6b18c77a0299edbf74bebcc7c02a31d979c0d9ff01d15125d4be7/acme-1.8.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/85/07/659705c6b18c77a0299edbf74bebcc7c02a31d979c0d9ff01d15125d4be7/acme-1.8.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/85/07/659705c6b18c77a0299edbf74bebcc7c02a31d979c0d9ff01d15125d4be7/acme-1.8.0.tar.gz.asc
+Version  : 1.9.0
+Release  : 86
+URL      : https://files.pythonhosted.org/packages/ac/12/5263234d2c6ac792481cde5a653c326988f933f066a5e6d0f2b42d3d664b/acme-1.9.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/ac/12/5263234d2c6ac792481cde5a653c326988f933f066a5e6d0f2b42d3d664b/acme-1.9.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/ac/12/5263234d2c6ac792481cde5a653c326988f933f066a5e6d0f2b42d3d664b/acme-1.9.0.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -34,8 +34,6 @@ BuildRequires : pyRFC3339-python
 BuildRequires : pyasn1-python
 BuildRequires : pycparser
 BuildRequires : pycparser-python
-BuildRequires : pytest
-BuildRequires : pytest-python
 BuildRequires : python-mock-python
 BuildRequires : pytz
 BuildRequires : requests-python
@@ -84,15 +82,15 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-1.8.0
-cd %{_builddir}/acme-1.8.0
+%setup -q -n acme-1.9.0
+cd %{_builddir}/acme-1.9.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1599596169
+export SOURCE_DATE_EPOCH=1602091756
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -104,16 +102,11 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
-%check
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/acme
-cp %{_builddir}/acme-1.8.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/acme-1.9.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
