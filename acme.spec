@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 1.11.0
-Release  : 92
-URL      : https://files.pythonhosted.org/packages/10/e8/407e62d6391ae3196777e416a08b457bc04086e633edd8a94070e9469c2e/acme-1.11.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/10/e8/407e62d6391ae3196777e416a08b457bc04086e633edd8a94070e9469c2e/acme-1.11.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/10/e8/407e62d6391ae3196777e416a08b457bc04086e633edd8a94070e9469c2e/acme-1.11.0.tar.gz.asc
+Version  : 1.12.0
+Release  : 93
+URL      : https://files.pythonhosted.org/packages/10/52/8789f3f0c9958898bd628f41c8f0b6ee72867961f20535e2018020433abc/acme-1.12.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/10/52/8789f3f0c9958898bd628f41c8f0b6ee72867961f20535e2018020433abc/acme-1.12.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/10/52/8789f3f0c9958898bd628f41c8f0b6ee72867961f20535e2018020433abc/acme-1.12.0.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -82,15 +82,15 @@ python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-1.11.0
-cd %{_builddir}/acme-1.11.0
+%setup -q -n acme-1.12.0
+cd %{_builddir}/acme-1.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1609886344
+export SOURCE_DATE_EPOCH=1612305553
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -106,7 +106,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/acme
-cp %{_builddir}/acme-1.11.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/acme-1.12.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
