@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : acme
-Version  : 1.12.0
-Release  : 94
-URL      : https://files.pythonhosted.org/packages/10/52/8789f3f0c9958898bd628f41c8f0b6ee72867961f20535e2018020433abc/acme-1.12.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/10/52/8789f3f0c9958898bd628f41c8f0b6ee72867961f20535e2018020433abc/acme-1.12.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/10/52/8789f3f0c9958898bd628f41c8f0b6ee72867961f20535e2018020433abc/acme-1.12.0.tar.gz.asc
+Version  : 1.13.0
+Release  : 95
+URL      : https://files.pythonhosted.org/packages/8f/e3/12419143610d53b5fe6c5fe35e7032d58aab2fb3b4d5ca224b1cda49010b/acme-1.13.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/8f/e3/12419143610d53b5fe6c5fe35e7032d58aab2fb3b4d5ca224b1cda49010b/acme-1.13.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/8f/e3/12419143610d53b5fe6c5fe35e7032d58aab2fb3b4d5ca224b1cda49010b/acme-1.13.0.tar.gz.asc
 Summary  : ACME protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -20,8 +20,8 @@ Requires: cryptography
 Requires: josepy
 Requires: pyOpenSSL
 Requires: pytz
+Requires: requests
 Requires: requests-toolbelt
-Requires: six
 BuildRequires : buildreq-distutils3
 BuildRequires : certifi
 BuildRequires : cffi
@@ -36,9 +36,10 @@ BuildRequires : pycparser
 BuildRequires : pycparser-python
 BuildRequires : python-mock-python
 BuildRequires : pytz
+BuildRequires : requests
 BuildRequires : requests-python
 BuildRequires : requests-toolbelt
-BuildRequires : six
+BuildRequires : setuptools
 BuildRequires : six-python
 
 %description
@@ -75,22 +76,21 @@ Requires: pypi(pytz)
 Requires: pypi(requests)
 Requires: pypi(requests_toolbelt)
 Requires: pypi(setuptools)
-Requires: pypi(six)
 
 %description python3
 python3 components for the acme package.
 
 
 %prep
-%setup -q -n acme-1.12.0
-cd %{_builddir}/acme-1.12.0
+%setup -q -n acme-1.13.0
+cd %{_builddir}/acme-1.13.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1612305553
+export SOURCE_DATE_EPOCH=1614871271
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -106,7 +106,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/acme
-cp %{_builddir}/acme-1.12.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/acme-1.13.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/acme/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
